@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/home.jsx'
+import Navbar from "./components/navbar.jsx"
 
 function App() {
-  const [count, setCount] = useState(0)
+	return (
+		<>
+			<Router>
+				<Navbar />
 
-  return (
-    <>
-      <div>
-        <button type='button' class='btn' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
-  )
+				<Routes>
+					<Route path='/' element={<Home />} />
+				</Routes>
+			</Router>
+		</>
+	);
 }
 
-export default App
+export default App;
