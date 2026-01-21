@@ -17,10 +17,10 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">
           <div className="hidden lg:flex">
             <li>
-              <a className="text-lg">About</a>
+              <Link to="/" aria-label="Home" className="text-lg">About</Link>
             </li>
             <li>
-              <a className="text-lg">Vote</a>
+              <Link to="/vote" aria-label="Vote" className="text-lg">Vote</Link>
             </li>
           </div>
           <li>

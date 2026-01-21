@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home.jsx";
+import Vote from "./pages/vote.jsx";
 import Navbar from "./components/navbar.jsx";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/vote" element={<Vote />} />
         </Routes>
       </Router>
     </>

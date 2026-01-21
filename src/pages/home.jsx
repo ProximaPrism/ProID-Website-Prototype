@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <>
@@ -16,16 +18,16 @@ export default function Home() {
               Bringing youths into the decision making of Singapore's future,
               together.
             </p>
-            <button type="button" className="btn btn-lg btn-primary">
+            <Link to="/vote" aria-label="Vote" type="button" className="btn btn-lg btn-primary">
               Let your voice be heard!
-            </button>
+            </Link>
           </div>
         </div>
       </div>
       <div className="hero bg-base-100 min-h-[50vh] justify-around px-8 py-4">
         <div className="hero-content flex-col lg:flex-row sm:gap-15">
           <div>
-            <h1 className="text-5xl font-bold">About Exhibitions</h1>
+            <h1 className="text-5xl font-bold">About Exhibitons</h1>
             <p className="text-lg py-6">
               Exhibitions is a youth-for-youth initiative to get youths aged
               18-25 to be interested in the development of Singapore's urban
@@ -173,9 +175,9 @@ export default function Home() {
               Start your urban planning journey with us and see what you can do
               to shape Singapore's future.
             </p>
-            <button type="button" className="btn btn-primary btn-lg">
+            <Link to="/vote" aria-label="Vote" type="button" className="btn btn-lg btn-primary">
               Let your voice be heard!
-            </button>
+            </Link>
           </div>
         </div>
       </div>
