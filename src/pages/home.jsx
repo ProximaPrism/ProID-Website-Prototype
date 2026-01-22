@@ -40,7 +40,7 @@ export default function Home() {
             </p>
           </div>
           <img
-            src="/src/assets/proto1.png"
+            src="/about/proto1.png"
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />
@@ -67,13 +67,13 @@ export default function Home() {
             </ul>
           </div>
           <img
-            src="/src/assets/proto2.avif"
+            src="/about/proto2.avif"
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />
         </div>
       </div>
-      <div className="bg-base-100 py-10">
+      <div className="bg-base-100 p-10">
         <div className="grid place-content-around">
           <h1 className="text-left text-5xl font-bold">
             However, youths <span className="text-primary">have</span> interest.
@@ -85,7 +85,7 @@ export default function Home() {
             we found that:
           </p>
         </div>
-        <div className="grid place-items-center px-6 py-4">
+        <div className="grid place-items-center px-10">
           <div className="stats shadow">
             <div className="stat">
               <div className="stat-figure text-secondary">
@@ -158,7 +158,7 @@ export default function Home() {
             </p>
           </div>
           <img
-            src="/src/assets/proto1.png"
+            src="/about/proto1.png"
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />

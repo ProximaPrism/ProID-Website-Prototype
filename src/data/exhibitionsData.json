@@ -1,0 +1,81 @@
+{
+  "locations": [
+    { "name": "Sun Plaza", "size": [6, 8], "id": "sun" },
+    { "name": "One Holland Village", "size": [5, 7], "id": "ohv" },
+    { "name": "Lot One", "size": [5, 7], "id": "cck" },
+    { "name": "Jurong Point", "size": [4, 6], "id": "jp" },
+    { "name": "Sengkang Grand Mall", "size": [6, 8], "id": "sgm" },
+    { "name": "Hougang Mall", "size": [5, 7], "id": "hgm" },
+    { "name": "Far East Plaza", "size": [7, 9], "id": "fep" },
+    { "name": "Junction 8", "size": [4, 6], "id": "bsh" },
+    { "name": "Westgate", "size": [6, 8], "id": "wg" },
+    { "name": "AMK Hub", "size": [5, 7], "id": "amk" },
+    { "name": "The Woodleigh Mall", "size": [6, 8], "id": "wlh" },
+    { "name": "Hillion Mall", "size": [4, 6], "id": "bp" },
+    { "name": "Our Tampines Hub", "size": [7, 9], "id": "oth" },
+    { "name": "Causeway Point", "size": [6, 8], "id": "wdl" },
+    { "name": "Bedok Mall", "size": [5, 7], "id": "bdk" },
+    { "name": "Changi City Point", "size": [5, 7], "id": "ccp" },
+    { "name": "Toa Payoh HDB Hub", "size": [7, 9], "id": "hdb" },
+    { "name": "Northpoint City", "size": [6, 8], "id": "npc" },
+    { "name": "The Clementi Mall", "size": [5, 7], "id": "clm" },
+    { "name": "Plantation Plaza", "size": [6, 8], "id": "plp" }
+  ],
+  "booth_types": [
+    {
+      "name": "Post-it Wall",
+      "size": [1, 1],
+      "desc": "Post your thoughts on the exhibition in this booth!"
+    },
+    {
+      "name": "True Or False",
+      "size": [1, 1],
+      "desc": "Bust some common myths and misconceptions in this booth!"
+    },
+    {
+      "name": "Basketball",
+      "size": [1, 2],
+      "desc": "Want to learn and stay active at the same time? This booth is for you!"
+    },
+    {
+      "name": "Strings",
+      "size": [1, 3],
+      "desc": "Express your views by tying knots in this one-of-a-kind booth!"
+    },
+    {
+      "name": "Artificial Intelligence (AI) Visualization",
+      "size": [2, 3],
+      "desc": "Explore your creativity in transforming urban spaces with our agent to guide you along the way!"
+    },
+    {
+      "name": "City Planner: A Game on Singapore's Urban Scenarios",
+      "size": [1, 2],
+      "desc": "Design and solve real-world urban challenge scenarios around Singapore. Think you got what it takes?"
+    },
+    {
+      "name": "Digital Canvas",
+      "size": [2, 2],
+      "desc": "A designated space to draw any ideas of what your future of Singapore would be. Let your creativity go wild!"
+    },
+    {
+      "name": "LEGO play area",
+      "size": [2, 3],
+      "desc": "Express your views by tying knots in this one-of-a-kind booth!"
+    },
+    {
+      "name": "An Urban Journey: A Virtual Reality (VR) experience",
+      "size": [2, 4],
+      "desc": "Using the power of VR, take a step of what Singapore's future can be through your own eyes in this flagship exhibition!"
+    },
+    {
+      "name": "Photo Booths",
+      "size": [1, 1],
+      "desc": "Take a picture of your exhibition journeys with your friends and family!"
+    },
+    {
+      "name": "Redemption Booth",
+      "size": [1, 2],
+      "desc": "Earned anything in the booths or minigames in the exhibition? Here's where can you earn your prizes!"
+    }
+  ]
+}
