@@ -56,7 +56,7 @@ export default function ExhibitionList() {
       return {
         ...location,
         scheduledTime: `${time.startTime} (${time.duration} hours)`,
-        uniqueId: `${location.id}-${time.unixTimestamp}`,
+        uniqueId: `${location.id}-${time.unixTimestamp}-${time.duration}`,
       };
     });
   }, []);
