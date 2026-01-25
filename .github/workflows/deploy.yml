@@ -41,6 +41,9 @@ jobs:
       # - name: Verify formatting
       #   run: deno fmt --check
 
+      - name: Deno Build  
+        run: deno run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
