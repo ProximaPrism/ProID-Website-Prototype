@@ -22,6 +22,9 @@ export default function Navbar() {
             <li>
               <Link to="/vote" aria-label="Vote" className="text-lg">Vote</Link>
             </li>
+            <li>
+              <Link to="/faq" aria-label="FAQ" className="text-lg">FAQ</Link>
+            </li>
           </div>
           <li>
             <details className="lg:hidden">
@@ -31,10 +34,13 @@ export default function Navbar() {
               </summary>
               <ul className="bg-base-100 rounded-t-none p-2">
                 <li>
-                  <a>About</a>
+                  <Link to="/" aria-label="Home" className="text-lg">About</Link>
                 </li>
                 <li>
-                  <a>Vote</a>
+                  <Link to="/vote" aria-label="Vote" className="text-lg">Vote</Link>
+                </li>
+                <li>
+                  <Link to="/faq" aria-label="FAQ" className="text-lg">FAQ</Link>
                 </li>
               </ul>
             </details>
