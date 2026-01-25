@@ -40,7 +40,7 @@ export default function Home() {
             </p>
           </div>
           <img
-            src="/about/proto1.png"
+            src="./about/proto1.png"
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />
@@ -67,7 +67,7 @@ export default function Home() {
             </ul>
           </div>
           <img
-            src="/about/proto2.avif"
+            src="./about/proto2.avif"
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />
@@ -90,7 +90,7 @@ export default function Home() {
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <img
-                  src="/src/assets/representation.svg"
+                  src="./src/assets/representation.svg"
                   className="inline-block stroke-current h-8 w-8"
                 />
               </div>

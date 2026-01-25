@@ -1,22 +1,95 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@oak/commons@1": "1.0.1",
+    "jsr:@oak/oak@^17.2.0": "17.2.0",
+    "jsr:@std/assert@1": "1.0.16",
+    "jsr:@std/bytes@1": "1.0.6",
+    "jsr:@std/crypto@1": "1.0.5",
+    "jsr:@std/encoding@1": "1.0.10",
+    "jsr:@std/encoding@^1.0.10": "1.0.10",
+    "jsr:@std/http@1": "1.0.23",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/media-types@1": "1.1.0",
+    "jsr:@std/path@1": "1.1.4",
+    "jsr:@tajpouria/cors@^1.2.1": "1.2.1",
+    "npm:@deno/vite-plugin@^1.0.6": "1.0.6_vite@7.3.1__picomatch@4.0.3",
     "npm:@eslint/js@^9.39.1": "9.39.2",
     "npm:@tailwindcss/vite@^4.1.18": "4.1.18_vite@7.3.1__picomatch@4.0.3",
-    "npm:@types/react-dom@^19.2.3": "19.2.3_@types+react@19.2.8",
-    "npm:@types/react@^19.2.5": "19.2.8",
-    "npm:@vitejs/plugin-react@^5.1.1": "5.1.2_vite@7.3.1__picomatch@4.0.3_@babel+core@7.28.6",
+    "npm:@types/react-dom@^19.2.3": "19.2.3_@types+react@19.2.9",
+    "npm:@types/react@^19.2.9": "19.2.9",
+    "npm:@vitejs/plugin-react@^5.1.2": "5.1.2_vite@7.3.1__picomatch@4.0.3_@babel+core@7.28.6",
     "npm:daisyui@^5.5.14": "5.5.14",
     "npm:eslint-plugin-react-hooks@^7.0.1": "7.0.1_eslint@9.39.2_zod@4.3.5",
     "npm:eslint-plugin-react-refresh@~0.4.24": "0.4.26_eslint@9.39.2",
     "npm:eslint@^9.39.2": "9.39.2",
     "npm:globals@^16.5.0": "16.5.0",
+    "npm:path-to-regexp@^6.3.0": "6.3.0",
     "npm:rand-seed@3": "3.0.0",
     "npm:react-dom@^19.2.0": "19.2.3_react@19.2.3",
     "npm:react-router-dom@^7.12.0": "7.12.0_react@19.2.3_react-dom@19.2.3__react@19.2.3",
     "npm:react@^19.2.0": "19.2.3",
     "npm:tailwindcss@^4.1.18": "4.1.18",
-    "npm:vite@^7.2.4": "7.3.1_picomatch@4.0.3"
+    "npm:vite@*": "7.3.1_picomatch@4.0.3",
+    "npm:vite@^7.3.1": "7.3.1_picomatch@4.0.3"
+  },
+  "jsr": {
+    "@oak/commons@1.0.1": {
+      "integrity": "889ff210f0b4292591721be07244ecb1b5c118742f5273c70cf30d7cd4184d0c",
+      "dependencies": [
+        "jsr:@std/assert",
+        "jsr:@std/bytes",
+        "jsr:@std/crypto",
+        "jsr:@std/encoding@1",
+        "jsr:@std/http",
+        "jsr:@std/media-types"
+      ]
+    },
+    "@oak/oak@17.2.0": {
+      "integrity": "938537a92fc7922a46a9984696c65fb189c9baad164416ac3e336768a9ff0cd1",
+      "dependencies": [
+        "jsr:@oak/commons",
+        "jsr:@std/assert",
+        "jsr:@std/bytes",
+        "jsr:@std/http",
+        "jsr:@std/media-types",
+        "jsr:@std/path",
+        "npm:path-to-regexp"
+      ]
+    },
+    "@std/assert@1.0.16": {
+      "integrity": "6a7272ed1eaa77defe76e5ff63ca705d9c495077e2d5fd0126d2b53fc5bd6532"
+    },
+    "@std/bytes@1.0.6": {
+      "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
+    },
+    "@std/crypto@1.0.5": {
+      "integrity": "0dcfbb319fe0bba1bd3af904ceb4f948cde1b92979ec1614528380ed308a3b40"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    },
+    "@std/http@1.0.23": {
+      "integrity": "6634e9e034c589bf35101c1b5ee5bbf052a5987abca20f903e58bdba85c80dee",
+      "dependencies": [
+        "jsr:@std/encoding@^1.0.10"
+      ]
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/media-types@1.1.0": {
+      "integrity": "c9d093f0c05c3512932b330e3cc1fe1d627b301db33a4c2c2185c02471d6eaa4"
+    },
+    "@std/path@1.1.4": {
+      "integrity": "1d2d43f39efb1b42f0b1882a25486647cb851481862dc7313390b2bb044314b5",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@tajpouria/cors@1.2.1": {
+      "integrity": "eca42e4fb7cb3906ef0ee3d1e565dd6bb4632ccd8e70a95cf4279759743328f0"
+    }
   },
   "npm": {
     "@babel/code-frame@7.28.6": {
@@ -154,6 +227,12 @@
       "dependencies": [
         "@babel/helper-string-parser",
         "@babel/helper-validator-identifier"
+      ]
+    },
+    "@deno/vite-plugin@1.0.6_vite@7.3.1__picomatch@4.0.3": {
+      "integrity": "sha512-Sh5XqvFuKAwjARTesi0n6xRpEXm1V0UeqKh+SxIrexCofxOaieNDMqXZD02RiZCg0mrJ43V8eCMuVrDfq6mLmg==",
+      "dependencies": [
+        "vite"
       ]
     },
     "@esbuild/aix-ppc64@0.27.2": {
@@ -646,14 +725,14 @@
     "@types/json-schema@7.0.15": {
       "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="
     },
-    "@types/react-dom@19.2.3_@types+react@19.2.8": {
+    "@types/react-dom@19.2.3_@types+react@19.2.9": {
       "integrity": "sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==",
       "dependencies": [
         "@types/react"
       ]
     },
-    "@types/react@19.2.8": {
-      "integrity": "sha512-3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==",
+    "@types/react@19.2.9": {
+      "integrity": "sha512-Lpo8kgb/igvMIPeNV2rsYKTgaORYdO1XGVZ4Qz3akwOj0ySGYMPlQWa8BaLn0G63D1aSaAQ5ldR06wCpChQCjA==",
       "dependencies": [
         "csstype"
       ]
@@ -1219,6 +1298,9 @@
     "path-key@3.1.1": {
       "integrity": "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="
     },
+    "path-to-regexp@6.3.0": {
+      "integrity": "sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ=="
+    },
     "picocolors@1.1.1": {
       "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
     },
@@ -1420,13 +1502,18 @@
     }
   },
   "workspace": {
+    "dependencies": [
+      "jsr:@oak/oak@^17.2.0",
+      "jsr:@tajpouria/cors@^1.2.1"
+    ],
     "packageJson": {
       "dependencies": [
+        "npm:@deno/vite-plugin@^1.0.6",
         "npm:@eslint/js@^9.39.1",
         "npm:@tailwindcss/vite@^4.1.18",
         "npm:@types/react-dom@^19.2.3",
-        "npm:@types/react@^19.2.5",
-        "npm:@vitejs/plugin-react@^5.1.1",
+        "npm:@types/react@^19.2.9",
+        "npm:@vitejs/plugin-react@^5.1.2",
         "npm:daisyui@^5.5.14",
         "npm:eslint-plugin-react-hooks@^7.0.1",
         "npm:eslint-plugin-react-refresh@~0.4.24",
@@ -1437,7 +1524,7 @@
         "npm:react-router-dom@^7.12.0",
         "npm:react@^19.2.0",
         "npm:tailwindcss@^4.1.18",
-        "npm:vite@^7.2.4"
+        "npm:vite@^7.3.1"
       ]
     }
   }
