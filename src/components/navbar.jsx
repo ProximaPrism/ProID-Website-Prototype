@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
+import Menu from "../assets/menu.svg";
 
 export default function Navbar() {
   return (
@@ -8,7 +10,7 @@ export default function Navbar() {
           <img
             width="210"
             height="70"
-            src="/src/assets/logo.png"
+            src={Logo}
             alt="Exhibitions"
           />
         </Link>
@@ -29,7 +31,7 @@ export default function Navbar() {
           <li>
             <details className="lg:hidden">
               <summary>
-                <img src="/src/assets/menu.svg" />
+                <img src={Menu} />
                 <a className="text-lg">Menu</a>
               </summary>
               <ul className="bg-base-100 rounded-t-none p-2">

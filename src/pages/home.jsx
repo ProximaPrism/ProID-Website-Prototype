@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import RepView from "../assets/representation.svg";
+import InterestDMP from "../assets/youth-contribute.svg";
+import InterestSG from "../assets/youth-contribute-sg.svg";
 
 export default function Home() {
   return (
@@ -90,7 +93,7 @@ export default function Home() {
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <img
-                  src="./src/assets/representation.svg"
+                  src={RepView}
                   className="inline-block stroke-current h-8 w-8"
                 />
               </div>
@@ -105,7 +108,7 @@ export default function Home() {
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <img
-                  src="/src/assets/youth-contribute.svg"
+                  src={InterestDMP}
                   className="inline-block stroke-current h-8 w-8"
                 />
               </div>
@@ -120,7 +123,7 @@ export default function Home() {
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <img
-                  src="/src/assets/youth-contribute-sg.svg"
+                  src={InterestSG}
                   className="inline-block stroke-current h-8 w-8"
                 />
               </div>
