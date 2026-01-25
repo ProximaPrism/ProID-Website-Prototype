@@ -161,7 +161,7 @@ export default function Home() {
             </p>
           </div>
           <img
-            src="/about/proto1.png"
+            src={`${import.meta.env.BASE_URL}/about/proto1.png`}
             alt="exhibition example"
             className="max-w-lg rounded-lg shadow-xl"
           />

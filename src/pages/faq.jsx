@@ -37,16 +37,6 @@ export default function FAQ() {
           </p>
         </div>
       </div>      
-      <div className="bg-base-100 p-10">
-        <div className="grid place-content-around">
-          <h1 className="text-left text-4xl font-bold">
-            Where's the source code hosted on?
-          </h1>
-          <p className="text-lg py-6 pb-0">
-            It's hosted on my GitHub account. The link is: https://github.com/ProximaPrism/ProID-Website-Prototype 
-          </p>
-        </div>
-      </div>
     </>
   );
 }
