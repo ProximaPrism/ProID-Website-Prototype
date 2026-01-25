@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data/exhibitionsData.json" with { type: "json" };
+import BoothGridContainer from "../components/container.jsx";
 
 export default function ExhibitionVotePanel() {
   const { uniqueId } = useParams();
@@ -40,14 +41,16 @@ export default function ExhibitionVotePanel() {
           <h1 className="text-left text-5xl font-bold">
             Voting: <span className="text-4xl">{location.name}</span>
           </h1>
-          <p className="text-lg py-6 pb-0">
+          <p className="text-xl py-6 pb-0">
             Time: {startTime} ({duration} hours)
           </p>
-          <p className="text-sm pb-6">
-            this data is really important
+          <p className="text-md pb-6">
+            Choose the layout of what you would like the exhibition to look
+            like. Let your personal preferences or creativity flow!
           </p>
         </div>
       </div>
+      <BoothGridContainer />
     </>
   );
 }
