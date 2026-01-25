@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Routes, HashRouter } from "react-router-dom";
+import { HashRouter as _Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import Vote from "./pages/vote.jsx";
 import FAQ from "./pages/faq.jsx";

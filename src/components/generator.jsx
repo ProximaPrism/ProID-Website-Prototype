@@ -70,7 +70,7 @@ export default function ExhibitionList() {
         >
           <figure>
             <img
-              src={`/locations/${item.id}.png`}
+              src={`${import.meta.env.BASE_URL}locations/${item.id}.png`}
               alt={item.name}
               className="max-w-xl"
             />

@@ -17,7 +17,7 @@ export default function FAQ() {
             Is this your final product of the web application?
           </h1>
           <p className="text-lg py-6 pb-0">
-            No, it is not. There is a bunch of functionality that I have missed out or ran out of time, such as this webpage which I made in 10 mins.
+            No, it is not. There is a bunch of functionality that I have missed out or ran out of time, such as this page which I made in 10 mins.
           </p>
           <p className="text-lg py-0">
             However, with the time and other projects at hand, I would say that I am quite satisfied with the result overall.
