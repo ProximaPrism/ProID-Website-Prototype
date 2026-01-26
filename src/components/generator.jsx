@@ -11,7 +11,7 @@ const getNextTime = (day, start, end, weekOffset) => {
   if (daysTo === 0 && now.getHours() >= end) daysTo = 7;
 
   const target = new Date(now);
-  target.setDate(now.getDate() + daysTo + (weekOffset * 7 * 2));
+  target.setDate(now.getDate() + daysTo + (weekOffset * 7 * 2)); // every 2 weeks
 
   const startTime = new Date(target).setHours(start, 0, 0, 0);
   const endTime = new Date(target).setHours(end, 0, 0, 0);
@@ -42,23 +42,41 @@ export default function ExhibitionList() {
   const exhibitions = useMemo(() => {
     const seed = new Rand("42");
     const day = 6;
+    const count = 3;
+    const selectedIndex = new Set();
+    const result = [];
+
+    // allows sequential exhibitions after date, i.e. exhibition B at 2nd top becomes the top as A passes
+    const now = new Date();
+    const timeRef = new Date("2026-01-01T00:00:00");
+    const weeksSinceTimeRef = Math.floor((now - timeRef) / 604800000);
+
+    // advance the seed for sequential exhibition listing 
+    for (let i = 0; i < weeksSinceTimeRef; i++) seed.next();
 
     // this array length determines the amount of exhibitions to show
-    return Array.from({ length: 3 }, (_, i) => {
+    while (result.length < count) {
       const index = Math.floor(seed.next() * data.locations.length);
+      
+      if (selectedIndex.has(index)) continue;
+
+      selectedIndex.add(index);
       const location = data.locations[index];
 
       const offsetStart = Math.floor(seed.next() * 8);
-      const offsetEnd = Math.floor(seed.next() * 2) + offsetStart;
+      const offsetEnd = Math.floor(seed.next() * 3) + offsetStart;
 
-      const time = getNextTime(day, 9 + offsetStart, 11 + offsetEnd, i);
+      const time = getNextTime(day, 9 + offsetStart, 11 + offsetEnd, result.length);
 
-      return {
+      if (time.unixTimestamp * 1000 <= now.getTime()) continue;
+
+      result.push({
         ...location,
         scheduledTime: `${time.startTime} (${time.duration} hours)`,
         uniqueId: `${location.id}-${time.unixTimestamp}-${time.duration}`,
-      };
-    });
+      });
+    };
+    return result;
   }, []);
 
   return (
@@ -75,7 +93,7 @@ export default function ExhibitionList() {
               className="max-w-xl"
             />
           </figure>
-          <div className="card-body min-w-[25vw] flex-1 pr-10">
+          <div className="card-body min-w-[30vw] flex-1 pr-5">
             <h2 className="card-title xl:text-3xl lg:text-2xl sm:text-3xl">
               {item.name}
             </h2>
@@ -85,11 +103,11 @@ export default function ExhibitionList() {
               </span>
               <span>{item.scheduledTime}</span>
             </div>
-            <div className="card-actions">
+            <div className="card-actions justify-end ml-auto mt-auto">
               <Link
                 to={`/exhibitions/${item.uniqueId}`}
                 key={item.uniqueId}
-                className="btn btn-ghost text-lg"
+                className="btn btn-primary text-lg w-30"
               >
                 Vote!
               </Link>

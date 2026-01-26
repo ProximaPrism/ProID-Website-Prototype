@@ -217,8 +217,8 @@ export default function BoothGrid(
                   width: w * cellSize,
                   height: h * cellSize,
                   backgroundColor: canPlaceHere
-                    ? "rgba(59,130,246,0.25)" // Blue for valid placement
-                    : "rgba(107,114,128,0.25)", // Gray if blocked
+                    ? "rgba(59,130,246,0.25)" // valid placement
+                    : "rgba(107,114,128,0.25)", // blocked
                 }}
               />
             );
