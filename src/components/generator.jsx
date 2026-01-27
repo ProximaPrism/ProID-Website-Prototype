@@ -51,13 +51,13 @@ export default function ExhibitionList() {
     const timeRef = new Date("2026-01-01T00:00:00");
     const weeksSinceTimeRef = Math.floor((now - timeRef) / 604800000);
 
-    // advance the seed for sequential exhibition listing 
+    // advance the seed for sequential exhibition listing
     for (let i = 0; i < weeksSinceTimeRef; i++) seed.next();
 
     // this array length determines the amount of exhibitions to show
     while (result.length < count) {
       const index = Math.floor(seed.next() * data.locations.length);
-      
+
       if (selectedIndex.has(index)) continue;
 
       selectedIndex.add(index);
@@ -66,7 +66,12 @@ export default function ExhibitionList() {
       const offsetStart = Math.floor(seed.next() * 8);
       const offsetEnd = Math.floor(seed.next() * 3) + offsetStart;
 
-      const time = getNextTime(day, 9 + offsetStart, 11 + offsetEnd, result.length);
+      const time = getNextTime(
+        day,
+        9 + offsetStart,
+        11 + offsetEnd,
+        result.length,
+      );
 
       if (time.unixTimestamp * 1000 <= now.getTime()) continue;
 
@@ -75,7 +80,7 @@ export default function ExhibitionList() {
         scheduledTime: `${time.startTime} (${time.duration} hours)`,
         uniqueId: `${location.id}-${time.unixTimestamp}-${time.duration}`,
       });
-    };
+    }
     return result;
   }, []);
 
@@ -93,16 +98,16 @@ export default function ExhibitionList() {
               className="max-w-xl"
             />
           </figure>
-          <div className="card-body min-w-[30vw] flex-1 pr-5">
-            <h2 className="card-title xl:text-3xl lg:text-2xl sm:text-3xl">
+          <div className="items-start card-body min-w-[30vw] flex-1 pr-5 gap-0.5">
+            <span className="card-title 2xl:text-4xl xl:text-3xl lg:text-2xl sm:text-3xl">
               {item.name}
-            </h2>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-lg">
-                Grid Size: {item.size[0]} x {item.size[1]}
-              </span>
-              <span>{item.scheduledTime}</span>
-            </div>
+            </span>
+            <span className="2xl:text-xl text-lg">
+              Grid Size: {item.size[0]} x {item.size[1]}
+            </span>
+            <span className="2xl:text-base xl:text-md lg:text-sm sm:text-md">
+              {item.scheduledTime}
+            </span>
             <div className="card-actions justify-end ml-auto mt-auto">
               <Link
                 to={`/exhibitions/${item.uniqueId}`}
