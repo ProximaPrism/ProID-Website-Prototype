@@ -16,6 +16,8 @@ const getNextTime = (day, start, end, weekOffset) => {
   const startTime = new Date(target).setHours(start, 0, 0, 0);
   const endTime = new Date(target).setHours(end, 0, 0, 0);
 
+  if (startTime >= endTime) return;
+
   const adjustedStartTime = (weekOffset === 0 && daysTo === 0)
     ? Math.max(startTime, now.getTime())
     : startTime;

@@ -3,11 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 export default function BoothGrid(
   { boothTypes = [], rows, cols, cellSize = 64 },
 ) {
-  const [selected, setSelected] = useState(null); // Palette selection
-  const [rotation, setRotation] = useState(0); // Global rotation mode
-  const [placed, setPlaced] = useState([]); // Placed booths
-  const [selectedBoothId, setSelectedBoothId] = useState(null); // Selected placed booth
-  const [hoverPos, setHoverPos] = useState({ x: null, y: null }); // Ghost preview
+  const [selected, setSelected] = useState(null); // booth selection
+  const [rotation, setRotation] = useState(0); // global rotation mode
+  const [placed, setPlaced] = useState([]); // placed booths
+  const [selectedBoothId, setSelectedBoothId] = useState(null); // selected placed booth
+  const [hoverPos, setHoverPos] = useState({ x: null, y: null }); // ghost preview
 
   // global rotation state
   const rotateGlobal = () => setRotation((r) => (r === 0 ? 90 : 0));
