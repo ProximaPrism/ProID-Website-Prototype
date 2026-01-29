@@ -1,4 +1,4 @@
-import ExhibitionList from "../components/generator.jsx";
+import ExhibitionList from "../components/exhibitions.jsx";
 
 export default function Vote() {
   return (

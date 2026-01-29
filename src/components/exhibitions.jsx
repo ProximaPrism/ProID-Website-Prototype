@@ -48,7 +48,7 @@ export default function ExhibitionList() {
 
     // allows sequential exhibitions after date, i.e. exhibition B at 2nd top becomes the top as A passes
     const now = new Date();
-    const timeRef = new Date("2026-01-01T00:00:00");
+    const timeRef = new Date("2026-01-03T09:00:00");
     const weeksSinceTimeRef = Math.floor((now - timeRef) / 604800000);
 
     // advance the seed for sequential exhibition listing
@@ -63,13 +63,10 @@ export default function ExhibitionList() {
       selectedIndex.add(index);
       const location = data.locations[index];
 
-      const offsetStart = Math.floor(seed.next() * 8);
-      const offsetEnd = Math.floor(seed.next() * 3) + offsetStart;
-
       const time = getNextTime(
         day,
-        9 + offsetStart,
-        11 + offsetEnd,
+        9,
+        12,
         result.length,
       );
 

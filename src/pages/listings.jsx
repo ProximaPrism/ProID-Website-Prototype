@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import data from "../data/exhibitionsData.json" with { type: "json" };
 import BoothGridContainer from "../components/container.jsx";
 
-export default function ExhibitionVotePanel() {
+export default function ExhibitionListings() {
   const { uniqueId } = useParams();
   const [locationId, unixTime, duration] = uniqueId.split("-");
 
