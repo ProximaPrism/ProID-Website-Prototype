@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 export default function BoothGrid(
   { boothTypes = [], rows, cols, cellSize = 64 },
 ) {
-  const [selected, setSelected] = useState(null); // booth selection
-  const [rotation, setRotation] = useState(0); // global rotation mode
-  const [placed, setPlaced] = useState([]); // placed booths
+  const [selected, setSelected] = useState(null);               // booth selection
+  const [rotation, setRotation] = useState(0);                  // global rotation mode
+  const [placed, setPlaced] = useState([]);                     // placed booths
   const [selectedBoothId, setSelectedBoothId] = useState(null); // selected placed booth
-  const [hoverPos, setHoverPos] = useState({ x: null, y: null }); // ghost preview
+  const [hoverPos, setHoverPos] = useState(null);               // hover preview
 
   // global rotation state
-  const rotateGlobal = () => setRotation((r) => (r === 0 ? 90 : 0));
+  const rotateGlobal = () => setRotation(r => (r === 0 ? 90 : 0));
 
   // get size after rotation
   const getSize = (type, rot) => {
@@ -61,15 +61,19 @@ export default function BoothGrid(
     setSelectedBoothId(null);
   }, [selectedBoothId]);
 
-  // keyboard support for removing using Delete or Backspace key
+  // keyboard inputs
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if ((e.key === "Delete" || e.key === "Backspace") && selectedBoothId) {
+    const onKeyDown = (keyboard) => {
+      if ((keyboard.key === "r" || keyboard.key === "R")) {
+        rotateGlobal();
+      }
+      if ((keyboard.key === "Delete" || keyboard.key === "Backspace") && selectedBoothId) {
         deleteSelectedBooth();
       }
     };
-    globalThis.addEventListener("keydown", onKeyDown);
-    return () => globalThis.removeEventListener("keydown", onKeyDown);
+
+    self.addEventListener("keydown", onKeyDown);
+    return () => self.removeEventListener("keydown", onKeyDown);
   }, [selectedBoothId, deleteSelectedBooth]);
 
   return (
@@ -146,6 +150,18 @@ export default function BoothGrid(
         <div
           className="relative grid border border-base-content/30 rounded-md bg-base-content/5"
           onClick={() => setSelectedBoothId(null)}
+          onMouseMove={(pos) => {
+            const rect = pos.currentTarget.getBoundingClientRect();
+            const x = Math.floor((pos.clientX - rect.left) / cellSize);
+            const y = Math.floor((pos.clientY - rect.top) / cellSize);
+
+            if (x >= 0 && x < cols && y >= 0 && y < rows) {
+              setHoverPos({x, y});
+            }
+            else {
+              setHoverPos(null);
+            }
+          }}
           style={{
             gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
             gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
@@ -159,9 +175,10 @@ export default function BoothGrid(
             return (
               <div
                 key={i}
-                onClick={() => placeBooth(x, y)}
-                onMouseEnter={() => setHoverPos({ x, y })}
-                onMouseLeave={() => setHoverPos({ x: null, y: null })}
+                onClick={(pos) => {
+                  pos.stopPropagation();
+                  placeBooth(x, y);
+                }}
                 className="border border-base-content/10 hover:bg-base-content/15 cursor-pointer"
               />
             );
@@ -180,9 +197,7 @@ export default function BoothGrid(
                   setSelectedBoothId(b.id);
                 }}
                 className={`absolute rounded p-2 text-base-100 shadow cursor-pointer ${
-                  isSelected
-                    ? "bg-primary ring-2 ring-accent"
-                    : "bg-primary/80"
+                  isSelected ? "bg-primary ring-2 ring-accent" : "bg-primary/80"
                 }`}
                 style={{
                   left: b.x * cellSize,
@@ -199,7 +214,7 @@ export default function BoothGrid(
           })}
 
           {/* Ghost preview */}
-          {selected && hoverPos.x !== null && hoverPos.y !== null && (() => {
+          {selected && hoverPos && (() => {
             const [w, h] = getSize(selected, rotation);
             const canPlaceHere = canPlace(
               selected,
