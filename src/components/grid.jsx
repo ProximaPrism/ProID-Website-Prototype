@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 export default function BoothGrid(
   { boothTypes = [], rows, cols, cellSize = 64 },
 ) {
-  const [selected, setSelected] = useState(null);               // booth selection
-  const [rotation, setRotation] = useState(0);                  // global rotation mode
-  const [placed, setPlaced] = useState([]);                     // placed booths
+  const [selected, setSelected] = useState(null); // booth selection
+  const [rotation, setRotation] = useState(0); // global rotation mode
+  const [placed, setPlaced] = useState([]); // placed booths
   const [selectedBoothId, setSelectedBoothId] = useState(null); // selected placed booth
-  const [hoverPos, setHoverPos] = useState(null);               // hover preview
+  const [hoverPos, setHoverPos] = useState(null); // hover preview
 
   // global rotation state
-  const rotateGlobal = () => setRotation(r => (r === 0 ? 90 : 0));
+  const rotateGlobal = () => setRotation((r) => (r === 0 ? 90 : 0));
 
   // get size after rotation
   const getSize = (type, rot) => {
@@ -67,7 +67,10 @@ export default function BoothGrid(
       if ((keyboard.key === "r" || keyboard.key === "R")) {
         rotateGlobal();
       }
-      if ((keyboard.key === "Delete" || keyboard.key === "Backspace") && selectedBoothId) {
+      if (
+        (keyboard.key === "Delete" || keyboard.key === "Backspace") &&
+        selectedBoothId
+      ) {
         deleteSelectedBooth();
       }
     };
@@ -131,16 +134,21 @@ export default function BoothGrid(
           <button
             type="button"
             onClick={rotateGlobal}
-            className="rounded border px-3 py-1 text-sm hover:bg-base-content/10"
+            aria-pressed={rotation === 90}
+            className={`btn px-6 py-1 text-lg transition ${
+              rotation === 90
+                ? "bg-base-content border-base-100 ring-1 ring-base-content text-base-100 hover:bg-base-content/90 "
+                : "border-base-content hover:bg-base-content/10"
+            }`}
           >
-            Rotate ↻ ({rotation}°)
+            {rotation === 90 ? "Rotate  ↻" : "Rotate  ↺"}
           </button>
 
           <button
             type="button"
             onClick={deleteSelectedBooth}
             disabled={!selectedBoothId}
-            className="rounded border px-3 py-1 text-sm text-secondary disabled:opacity-40 hover:bg-secondary/30"
+            className="btn border-secondary text-secondary bg-secondary-content px-6 py-1 text-md text-lg disabled:opacity-40 hover:bg-secondary/30"
           >
             Delete
           </button>
@@ -156,9 +164,8 @@ export default function BoothGrid(
             const y = Math.floor((pos.clientY - rect.top) / cellSize);
 
             if (x >= 0 && x < cols && y >= 0 && y < rows) {
-              setHoverPos({x, y});
-            }
-            else {
+              setHoverPos({ x, y });
+            } else {
               setHoverPos(null);
             }
           }}
