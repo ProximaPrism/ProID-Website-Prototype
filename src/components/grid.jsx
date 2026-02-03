@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 export default function BoothGrid(
-  { boothTypes = [], rows, cols, cellSize = 64 },
+  { boothTypes= [], rows, cols},
 ) {
   const [selected, setSelected] = useState(null); // booth selection
   const [rotation, setRotation] = useState(0); // global rotation mode
@@ -9,8 +9,17 @@ export default function BoothGrid(
   const [selectedBoothId, setSelectedBoothId] = useState(null); // selected placed booth
   const [hoverPos, setHoverPos] = useState(null); // hover preview
 
+  const hasKeyboard = typeof globalThis !== "undefined" &&
+  globalThis.matchMedia("(hover: hover)").matches &&
+  globalThis.matchMedia("(pointer: fine)").matches
+
   // global rotation state
   const rotateGlobal = () => setRotation((r) => (r === 0 ? 90 : 0));
+
+  const baseSize = [7, 9];
+  const basePx = 64;
+  const cellLength = (basePx * baseSize[0]) / rows;
+  const cellWidth = (basePx * baseSize[1]) / cols;
 
   // get size after rotation
   const getSize = (type, rot) => {
@@ -63,6 +72,7 @@ export default function BoothGrid(
 
   // keyboard inputs
   useEffect(() => {
+    if (!hasKeyboard) return;
     const onKeyDown = (keyboard) => {
       if ((keyboard.key === "r" || keyboard.key === "R")) {
         rotateGlobal();
@@ -77,11 +87,11 @@ export default function BoothGrid(
 
     self.addEventListener("keydown", onKeyDown);
     return () => self.removeEventListener("keydown", onKeyDown);
-  }, [selectedBoothId, deleteSelectedBooth]);
+  }, [hasKeyboard, selectedBoothId, deleteSelectedBooth]);
 
   return (
     <div className="flex gap-6">
-      {/* Palette */}
+      {/* Booth Options */}
       <div className="flex flex-col w-72">
         <h1 className="text-2xl font-semibold mb-3 pl-3">Booth Types</h1>
         <aside className="space-y-3 h-[50vh] overflow-y-auto border-r border-neutral/30 p-3 pr-5">
@@ -94,7 +104,7 @@ export default function BoothGrid(
                 onClick={() => setSelected(bt)}
                 className={`w-full rounded border p-3 text-left ${
                   selected?.name === bt.name
-                    ? "border-accent bg-accent/20"
+                    ? "border-primary bg-primary-content/70"
                     : "border-base-content/30 hover:bg-base-content/10"
                 }`}
               >
@@ -135,22 +145,35 @@ export default function BoothGrid(
             type="button"
             onClick={rotateGlobal}
             aria-pressed={rotation === 90}
-            className={`btn px-6 py-1 text-lg transition ${
+            className={`btn px-4 py-1 text-lg flex items-center gap-2 ${
               rotation === 90
                 ? "bg-base-content border-base-100 ring-1 ring-base-content text-base-100 hover:bg-base-content/90 "
                 : "border-base-content hover:bg-base-content/10"
             }`}
           >
-            {rotation === 90 ? "Rotate  ↻" : "Rotate  ↺"}
+            <span className="w-4 text-center">
+              {rotation === 90 ? "↻" : "↺"}
+            </span>
+            Rotate
+            {!hasKeyboard ? null : <span className="text-sm">(R)</span>}
           </button>
 
           <button
             type="button"
             onClick={deleteSelectedBooth}
             disabled={!selectedBoothId}
-            className="btn border-secondary text-secondary bg-secondary-content px-6 py-1 text-md text-lg disabled:opacity-40 hover:bg-secondary/30"
+            className="btn border-secondary text-secondary bg-secondary-content px-4 py-1 text-lg items-center gap-2 disabled:opacity-40 hover:bg-secondary/30"
           >
+            <span className="w-4 text-center">✖</span>
             Delete
+            {!hasKeyboard ? null : <span className="text-sm">(Bck)</span>}
+          </button>
+
+          <button
+            type="button"
+            className="btn border-primary text-base-100 bg-primary px-6 py-1 text-lg"
+          >
+            Submit
           </button>
         </div>
 
@@ -160,8 +183,8 @@ export default function BoothGrid(
           onClick={() => setSelectedBoothId(null)}
           onMouseMove={(pos) => {
             const rect = pos.currentTarget.getBoundingClientRect();
-            const x = Math.floor((pos.clientX - rect.left) / cellSize);
-            const y = Math.floor((pos.clientY - rect.top) / cellSize);
+            const x = Math.floor((pos.clientX - rect.left) / cellWidth);
+            const y = Math.floor((pos.clientY - rect.top) / cellLength);
 
             if (x >= 0 && x < cols && y >= 0 && y < rows) {
               setHoverPos({ x, y });
@@ -170,8 +193,8 @@ export default function BoothGrid(
             }
           }}
           style={{
-            gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
-            gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
+            gridTemplateColumns: `repeat(${cols}, ${cellWidth}px)`,
+            gridTemplateRows: `repeat(${rows}, ${cellLength}px)`,
           }}
         >
           {/* Grid cells */}
@@ -207,10 +230,10 @@ export default function BoothGrid(
                   isSelected ? "bg-primary ring-2 ring-accent" : "bg-primary/80"
                 }`}
                 style={{
-                  left: b.x * cellSize,
-                  top: b.y * cellSize,
-                  width: w * cellSize,
-                  height: h * cellSize,
+                  left: b.x * cellWidth,
+                  top: b.y * cellLength,
+                  width: w * cellWidth,
+                  height: h * cellLength,
                 }}
               >
                 <div className="text-sm font-semibold leading-tight">
@@ -234,10 +257,10 @@ export default function BoothGrid(
               <div
                 className="absolute rounded pointer-events-none"
                 style={{
-                  left: hoverPos.x * cellSize,
-                  top: hoverPos.y * cellSize,
-                  width: w * cellSize,
-                  height: h * cellSize,
+                  left: hoverPos.x * cellWidth,
+                  top: hoverPos.y * cellLength,
+                  width: w * cellWidth,
+                  height: h * cellLength,
                   backgroundColor: canPlaceHere
                     ? "rgba(59,130,246,0.25)" // valid placement
                     : "rgba(107,114,128,0.25)", // blocked
